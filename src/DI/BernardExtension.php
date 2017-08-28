@@ -69,11 +69,6 @@ class BernardExtension extends CompilerExtension
 			$debugCommand->addTag('kdyby.console.command');
 			$consumeCommand->addTag('kdyby.console.command');
 		}
-	}
-
-	public function beforeCompile()
-	{
-		$builder = $this->getContainerBuilder();
 
 		/**
 		 * Consumer
@@ -85,7 +80,18 @@ class BernardExtension extends CompilerExtension
 		 * Router
 		 */
 		$builder->addDefinition($this->prefix('router'))
-			->setClass(ContainerAwareRouter::class)
+			->setClass(ContainerAwareRouter::class);
+	}
+
+	public function beforeCompile()
+	{
+		$builder = $this->getContainerBuilder();
+
+		/**
+		 * Router
+		 */
+		$builder
+			->getDefinition($this->prefix('router'))
 			->setArguments([
 				'receivers' => $this->getReceiverServiceMap()
 			]);
