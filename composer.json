@@ -3,7 +3,7 @@
 	"description": "Bernard queue library integration with Nette projects",
 	"require": {
 		"php": "^7.1",
-		"bernard/bernard": "1.0.0-alpha6"
+		"bernard/bernard": "1.0.0-alpha9"
 	},
 	"autoload": {
 		"psr-4": {
